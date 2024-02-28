@@ -1,15 +1,17 @@
 "use client";
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useState } from "react";
 
 const RegisterPage = () => {
   const [user, setUser] = useState({
-    password: "",
     email: "",
+    password: "",
     fullname: "",
   });
+
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,8 +31,11 @@ const RegisterPage = () => {
         email: "",
         fullname: "",
       });
+      setError("");
     } catch (error) {
-      console.log(`Error: ${error.response.data.message}`);
+      if (error instanceof AxiosError) {
+        setError(error.response.data);
+      }
     }
   };
 
@@ -39,6 +44,11 @@ const RegisterPage = () => {
       <div className="bg-gray-800 text-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4">Registro</h2>
 
+        {error && (
+          <div className="text-center text-sm px-5 py-1 text-gray-100 bg-red-400 rounded-sm font-medium mb-3">
+            {error.message}
+          </div>
+        )}
         <form onSubmit={onHandleSubmit}>
           <div className="mb-4">
             <label
