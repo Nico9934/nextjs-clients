@@ -1,7 +1,9 @@
 "use client";
 
 import axios, { AxiosError } from "axios";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterPage = () => {
@@ -11,6 +13,7 @@ const RegisterPage = () => {
     fullname: "",
   });
 
+  const router = useRouter();
   const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
@@ -25,12 +28,19 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       const res = await axios.post("/api/auth/register", user);
-      console.log(res.data);
       setUser({
         password: "",
         email: "",
         fullname: "",
       });
+
+      const resNextAuth = await signIn("credentials", {
+        email: res.data.userSaved.email,
+        password: user.password,
+        redirect: false,
+      });
+      if (resNextAuth.ok) router.push("/dashboard");
+
       setError("");
     } catch (error) {
       if (error instanceof AxiosError) {

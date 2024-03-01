@@ -1,6 +1,7 @@
 import { connectDb } from "@/libs/mongodb";
 import User from "@/models/user";
 import { hash } from "bcryptjs";
+
 const { NextResponse } = require("next/server");
 
 export const POST = async (req) => {
@@ -28,7 +29,6 @@ export const POST = async (req) => {
 
   try {
     const userFound = await User.findOne({ email });
-
     if (userFound) {
       return NextResponse.json(
         { message: "Email already exist" },
@@ -36,14 +36,14 @@ export const POST = async (req) => {
       );
     }
     const hashedPassword = await hash(password, 12);
-
     const newUser = new User({
       fullname,
       email,
       password: hashedPassword,
     });
     const userSaved = await newUser.save();
-    return NextResponse.json({ message: "User created" }, { status: 201 });
+
+    return NextResponse.json({ userSaved }, { status: 201 });
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.error(
