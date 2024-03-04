@@ -15,7 +15,7 @@ const EditClientForm = ({ params }) => {
     email: "",
     phone: "",
     address: "",
-    user: userSession._id,
+    user: userSession?._id,
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -23,20 +23,20 @@ const EditClientForm = ({ params }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (status === "loading" || userSession._id === undefined) {
-      router.push("/dashboard");
-    } else {
-      const getData = async () => {
-        try {
-          const res = await axios(`/api/clients/${params.id}`);
-          setClient(res.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      getData();
-    }
-  }, []);
+    // if (status === "loading" || userSession._id === undefined) {
+    //   router.push("/dashboard");
+    // } else {
+    const getData = async () => {
+      try {
+        const res = await axios(`/api/clients/${params.id}`);
+        setClient(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+    // }
+  }, [session]);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setClient((prevClient) => ({

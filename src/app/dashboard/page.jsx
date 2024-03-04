@@ -10,6 +10,7 @@ import Spinner from "../../components/Spinner";
 
 const DashboardPage = () => {
   const { data: session, status } = useSession();
+
   const user = session?.user;
 
   const [clients, setClients] = useState([]);
@@ -28,7 +29,7 @@ const DashboardPage = () => {
     const getData = async () => {
       if (user === undefined) setLoading(true);
       try {
-        if (session.user && user._id && status === "authenticated") {
+        if (session.user && status === "authenticated") {
           const res = await axios("/api/clients", {
             headers: {
               userId: user._id,
