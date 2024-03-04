@@ -13,13 +13,13 @@ const AddClientForm = () => {
     email: "",
     phone: "",
     address: "",
-    user: userSession._id,
+    user: userSession?._id,
   });
   const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    if (status === "loading" || userSession._id === undefined) {
+    if (status === "loading" || userSession?._id === undefined) {
       router.push("/dashboard");
     }
   }, []);
