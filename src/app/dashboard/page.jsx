@@ -50,7 +50,7 @@ const DashboardPage = () => {
   return (
     <div>
       <NavBar />
-      <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">
+      <div className="min-h-screen flex justify-center bg-gray-950 text-white">
         {loading ? (
           <div className="w-full h-full flex justify-center items-center">
             <Spinner />
@@ -61,9 +61,11 @@ const DashboardPage = () => {
               <h2 className="text-xl">Clientes</h2>
               <Link
                 href="/newClient"
-                className="text-gray-100  bg-green-800 p-2 rounded-sm text-md hover:cursor-pointer hover:bg-green-600 transition-all"
+                className="text-gray-100 h-12 w-12 items-center flex justify-center bg-green-400 rounded-full p-2 text-md hover:cursor-pointer hover:bg-green-600 transition-all"
               >
-                Nuevo cliente
+                <svg className="w-6 h-6 fill-gray-100" viewBox="0 0 448 512">
+                  <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                </svg>
               </Link>
             </div>
             <table className="w-full mb-4 border-b-2">
