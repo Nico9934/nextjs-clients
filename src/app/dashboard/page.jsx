@@ -21,11 +21,12 @@ const DashboardPage = () => {
       setLoading(true);
 
       if (!session || !session.user) {
-        console.error("La sesión o el usuario es undefined");
+        return setLoading(true);
       }
     }
 
     const getData = async () => {
+      if (user === undefined) setLoading(true);
       try {
         if (session.user && user._id && status === "authenticated") {
           const res = await axios("/api/clients", {
