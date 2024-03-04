@@ -112,10 +112,10 @@ const RegisterPage = () => {
           </div>
 
           <div className="flex items-center mb-4 gap-3">
-            <p className="text-xs text-gray-600">
-              ¿Ya tienes cuenta?{" "}
+            <p className="text-xs m-auto text-gray-600">
+              ¿Ya tienes cuenta?
               <Link href="/login" className="text-blue-400 hover:underline">
-                Inicia sesión
+                {"  "}Inicia sesión
               </Link>
             </p>
           </div>

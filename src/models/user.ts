@@ -17,6 +17,7 @@ const userSchema = new Schema( {
         minLength: [3, "The name must be at least 3 characters"],
         maxLength: [50, "The name must be no more than 50 characters"],
     }
+    
 })
 
 

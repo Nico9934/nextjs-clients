@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import Providers from "./Providers";
+import NavBar from "@/components/NavBar";
+import { useSession } from "next-auth/react";
 
 
 
@@ -15,10 +17,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <body>
       <Providers>
+        
         {children}
       </Providers>
       </body>

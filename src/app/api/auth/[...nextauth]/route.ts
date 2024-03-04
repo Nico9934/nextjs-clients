@@ -56,6 +56,9 @@ const handler = nextAuth({
             
             return session;
         }
+    },
+    pages: {
+        signIn: '/login',
     }
 })
 
