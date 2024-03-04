@@ -36,9 +36,7 @@ const AddClientForm = () => {
     try {
       if (client.user && status === "authenticated") {
         const res = await axios.post("api/clients", client);
-        console.log(res.status);
         if (res.status === 200) {
-          console.log(res);
           router.push("/dashboard");
           setClient({
             name: "",

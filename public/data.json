@@ -1,0 +1,72 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "1234567890",
+    "address": "123 Main St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "phone": "0987654321",
+    "address": "456 Elm St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Mike Johnson",
+    "email": "mikejohnson@example.com",
+    "phone": "5555555555",
+    "address": "789 Oak St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emilydavis@example.com",
+    "phone": "1111111111",
+    "address": "987 Maple St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Chris Wilson",
+    "email": "chriswilson@example.com",
+    "phone": "9999999999",
+    "address": "654 Pine St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Sarah Anderson",
+    "email": "sarahanderson@example.com",
+    "phone": "2222222222",
+    "address": "321 Cedar St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "David Taylor",
+    "email": "davidtaylor@example.com",
+    "phone": "8888888888",
+    "address": "567 Walnut St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Amy Brown",
+    "email": "amybrown@example.com",
+    "phone": "3333333333",
+    "address": "654 Birch St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Brian Miller",
+    "email": "brianmiller@example.com",
+    "phone": "7777777777",
+    "address": "789 Spruce St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  },
+  {
+    "name": "Jessica Lee",
+    "email": "jessicalee@example.com",
+    "phone": "4444444444",
+    "address": "987 Fir St",
+    "user": "65e226c9dcdc97c9a2a8fba4"
+  }
+]

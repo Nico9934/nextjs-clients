@@ -2,20 +2,16 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
-const ClientData = ({ client }, refresh, setRefresh) => {
+const ClientData = ({ client, refresh, setRefresh }) => {
   const router = useRouter();
 
-  const handleEliminarCliente = async (id) => {
-    console.log(id);
+  const handleRemoveClient = async (id) => {
     try {
       const res = await axios.delete(`/api/clients/${id}`);
-      console.log(res.status);
       if (res.status === 200) {
-        console.log(refresh);
         setRefresh(!refresh);
-        console.log(refresh);
       }
     } catch (error) {
       console.log(error);
@@ -29,11 +25,13 @@ const ClientData = ({ client }, refresh, setRefresh) => {
       <td>{client.phone}</td>
       <td>{client.address}</td>
       <td className="flex p-2 justify-center">
-        <button className="text-blue-400 mr-2">Editar</button>
+        <Link className="text-blue-400 mr-2" href={`/edit/${client._id}`}>
+          Editar
+        </Link>
 
         <button
           className="text-red-500 cursor-pointer"
-          onClick={() => handleEliminarCliente(client._id)}
+          onClick={() => handleRemoveClient(client._id)}
         >
           Eliminar
         </button>

@@ -22,14 +22,10 @@ const handler = nextAuth({
             },
             async authorize(credentials, req) {
                
-                // Validate credentials from Frontend
                 connectDb()
-                // console.log(credentials)
                 
                 const userFound = await User.findOne({email: credentials?.email}).select("+password");
-                // 1.26.41
                 if(!userFound) throw new Error("Invalid credentials");
-                console.log(userFound)
 
                 const passwordMatch = await bcrypt.compare(credentials!.password, userFound.password)
               
@@ -46,14 +42,7 @@ const handler = nextAuth({
             return token; 
         },
         session({session, token}) {
-            // console.log(session, token)
             session.user = token.user as any
-            // session.user = token.user as {
-            //     id: string;
-            //     fullname: string;
-            //     email: string;
-            // }
-            
             return session;
         }
     },

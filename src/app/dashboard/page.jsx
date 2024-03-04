@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
 import ClientData from "../../components/ClientData";
+import Spinner from "../../components/Spinner";
 
 const DashboardPage = () => {
   const { data: session, status } = useSession();
@@ -13,8 +14,17 @@ const DashboardPage = () => {
 
   const [clients, setClients] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!session) {
+      setLoading(true);
+
+      if (!session || !session.user) {
+        console.error("La sesión o el usuario es undefined");
+      }
+    }
+
     const getData = async () => {
       try {
         if (session.user && user._id && status === "authenticated") {
@@ -24,6 +34,7 @@ const DashboardPage = () => {
             },
           });
           setClients(res.data);
+          setLoading(false);
         } else {
           console.error("User or user._id is undefined");
         }
@@ -38,40 +49,46 @@ const DashboardPage = () => {
     <div>
       <NavBar />
       <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">
-        <div className="p-8 rounded shadow-md w-9/12">
-          <div className="flex justify-between items-center font-semibold mb-8 ">
-            <h2 className="text-xl">Clientes</h2>
-            <Link
-              href="/newClient"
-              className="text-gray-100  bg-green-800 p-2 rounded-sm text-md hover:cursor-pointer hover:bg-green-600 transition-all"
-            >
-              Nuevo cliente
-            </Link>
+        {loading ? (
+          <div className="w-full h-full flex justify-center items-center">
+            <Spinner />
           </div>
-          <table className="w-full mb-4 border-b-2">
-            <thead>
-              <tr>
-                <th className="text-start">Nombre</th>
-                <th className="text-start">Email</th>
-                <th className="text-start">Teléfono</th>
-                <th className="text-start">Dirección</th>
-                <th className="text-start">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map((client) => {
-                return (
-                  <ClientData
-                    key={client._id}
-                    client={client}
-                    refresh={refresh}
-                    setRefresh={setRefresh}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        ) : (
+          <div className="p-8 rounded shadow-md w-9/12">
+            <div className="flex justify-between items-center font-semibold mb-8 ">
+              <h2 className="text-xl">Clientes</h2>
+              <Link
+                href="/newClient"
+                className="text-gray-100  bg-green-800 p-2 rounded-sm text-md hover:cursor-pointer hover:bg-green-600 transition-all"
+              >
+                Nuevo cliente
+              </Link>
+            </div>
+            <table className="w-full mb-4 border-b-2">
+              <thead>
+                <tr>
+                  <th className="text-start">Nombre</th>
+                  <th className="text-start">Email</th>
+                  <th className="text-start">Teléfono</th>
+                  <th className="text-start">Dirección</th>
+                  <th className="text-start">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {clients.map((client) => {
+                  return (
+                    <ClientData
+                      key={client._id}
+                      client={client}
+                      refresh={refresh}
+                      setRefresh={setRefresh}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
