@@ -82,6 +82,8 @@ const DashboardPage = () => {
                       client={client}
                       refresh={refresh}
                       setRefresh={setRefresh}
+                      loading={loading}
+                      setLoading={setLoading}
                     />
                   );
                 })}

@@ -4,14 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const ClientData = ({ client, refresh, setRefresh }) => {
+const ClientData = ({ client, refresh, setRefresh, loading, setLoading }) => {
   const router = useRouter();
 
   const handleRemoveClient = async (id) => {
     try {
       const res = await axios.delete(`/api/clients/${id}`);
+
       if (res.status === 200) {
         setRefresh(!refresh);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
