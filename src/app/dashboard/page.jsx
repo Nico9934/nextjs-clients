@@ -78,7 +78,7 @@ const DashboardPage = () => {
                   <th className="text-start">Acciones</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="w-full">
                 {clients.map((client) => {
                   return (
                     <ClientData
