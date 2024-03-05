@@ -21,11 +21,11 @@ const ClientData = ({ client, refresh, setRefresh, loading, setLoading }) => {
   };
 
   return (
-    <tr className="text-xs sm:text-sm sm:text-start border-b-2 py-2  border-blue-900 flex flex-col sm:table-row">
-      <td className="text-xs sm:text-sm">{client.name}</td>
-      <td className="text-xs sm:text-sm">{client.email}</td>
-      <td className="text-xs sm:text-sm">{client.phone}</td>
-      <td className="text-xs sm:text-sm">{client.address}</td>
+    <tr className="text-sm sm:text-sm sm:text-start border-b-2 py-2  border-blue-900 flex flex-col sm:table-row">
+      <td className="sm:text-sm">{client.name}</td>
+      <td className="sm:text-sm">{client.email}</td>
+      <td className="sm:text-sm">{client.phone}</td>
+      <td className="sm:text-sm">{client.address}</td>
       <td className="flex p-2 sm:justify-center items-start gap-5">
         <Link className="text-blue-400  sm:mr-2" href={`/edit/${client._id}`}>
           <svg
