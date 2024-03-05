@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import HeroDescription from "../../components/HeroDescription";
+import Spinner from "@/components/Spinner";
 
 const RegisterPage = () => {
   const [user, setUser] = useState({
@@ -16,6 +17,7 @@ const RegisterPage = () => {
 
   const router = useRouter();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +28,6 @@ const RegisterPage = () => {
   };
 
   const validateData = () => {
-    console.log("validando...");
     const emailRegex =
       /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     const stringRegex = /^[a-zA-Z ]+$/;
@@ -52,6 +53,8 @@ const RegisterPage = () => {
     try {
       if (validado) {
         const res = await axios.post("/api/auth/register", user);
+        setLoading(true);
+
         setUser({
           password: "",
           email: "",
@@ -64,6 +67,7 @@ const RegisterPage = () => {
           redirect: false,
         });
         if (resNextAuth.ok) router.push("/dashboard");
+        setLoading(false);
 
         setError("");
       }
@@ -85,74 +89,78 @@ const RegisterPage = () => {
             {error.message || error}
           </div>
         )}
-        <form onSubmit={onHandleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="fullname"
-              className="block text-xs font-medium mb-3"
+        {loading ? (
+          <Spinner></Spinner>
+        ) : (
+          <form onSubmit={onHandleSubmit}>
+            <div className="mb-4">
+              <label
+                htmlFor="fullname"
+                className="block text-xs font-medium mb-3"
+              >
+                Nombre de Usuario
+              </label>
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                value={user.fullname}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
+                placeholder="Ingresa tu nombre de usuario"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-xs font-medium mb-3">
+                Email
+              </label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={user.email}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
+                placeholder="Ingresa tu email"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className="block text-xs font-medium mb-3"
+              >
+                Contraseña
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={handleInputChange}
+                value={user.password}
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
+                placeholder="Ingresa tu contraseña"
+              />
+            </div>
+
+            <div className="flex items-center mb-4 gap-3">
+              <p className="text-xs m-auto text-gray-600">
+                ¿Ya tienes cuenta?
+                <Link href="/login" className="text-gray-100 hover:underline">
+                  {"  "}Inicia sesión
+                </Link>
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-violet-700 text-sm text-white py-2 rounded hover:bg-violet-600 focus:outline-none focus:shadow-outline-blue"
             >
-              Nombre de Usuario
-            </label>
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              value={user.fullname}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
-              placeholder="Ingresa tu nombre de usuario"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-xs font-medium mb-3">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={user.email}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
-              placeholder="Ingresa tu email"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              htmlFor="password"
-              className="block text-xs font-medium mb-3"
-            >
-              Contraseña
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              onChange={handleInputChange}
-              value={user.password}
-              className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
-              placeholder="Ingresa tu contraseña"
-            />
-          </div>
-
-          <div className="flex items-center mb-4 gap-3">
-            <p className="text-xs m-auto text-gray-600">
-              ¿Ya tienes cuenta?
-              <Link href="/login" className="text-gray-100 hover:underline">
-                {"  "}Inicia sesión
-              </Link>
-            </p>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-violet-700 text-sm text-white py-2 rounded hover:bg-violet-600 focus:outline-none focus:shadow-outline-blue"
-          >
-            Registrarse
-          </button>
-        </form>
+              Registrarse
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
