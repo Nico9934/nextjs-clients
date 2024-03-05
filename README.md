@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🔷 ClientApp Manager - Descripción del Proyecto 🔷
+Mi nombre es Nico Rolón, y quiero compartir contigo mi proyecto ClientApp, una aplicación desarrollada completamente con Next.js, TypeScript y MongoDb. Este proyecto representa un paso significativo en mi trayectoria como desarrollador FrontEnd, y ha sido construido utilizando tecnologías avanzadas para brindar una experiencia eficiente y atractiva.
 
-## Getting Started
+🚀 Tecnologías Utilizadas
+NextJsCrud se basa en Next.js, aprovechando la potencia de esta biblioteca de React para construir aplicaciones web rápidas y escalables. Además, se integra con Vercel, mongoDB y Tailwind CSS para ofrecer un conjunto completo de herramientas para desarrollo, implementación y estilización.
 
-First, run the development server:
+Next.js: Plataforma que facilita la construcción de aplicaciones web React eficientes y escalables.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Vercel: Plataforma de implementación que permite desplegar y alojar aplicaciones de manera sencilla y rápida.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+MongoDB: Sistema de gestión de bases de datos no relacional utilizado para almacenar y recuperar datos de manera eficiente.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tailwind CSS: Framework de utilidades de estilo que proporciona un enfoque práctico y fácil de usar para el diseño web.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+🎨 Estilo y Diseño
+El proyecto utiliza Tailwind CSS para estilar la interfaz, siguiendo principios de diseño modernos y una metodología centrada en el desarrollo móvil primero (Mobile First). El diseño resultante es completamente responsive, adaptándose a diferentes dispositivos y tamaños de pantalla.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+🌐 Deploy del Proyecto
+Puedes explorar la aplicación NextJsCrud desplegada en Vercel a través del siguiente enlace: [👉 Hace click 👈](https://vercel.com/nico9934/nextjs-clients-crud)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⚙️ Funcionalidades Destacadas
+Operaciones CRUD: La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en los clientes, brindando una gestión completa de la información.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Validaciones: El proyecto tiene validación de formularios que vienen y se manejan desde el backend, con envio y manejo de errores. 
 
-## Deploy on Vercel
+Interfaz Intuitiva: El diseño de la interfaz se ha desarrollado pensando en la facilidad de uso, proporcionando una experiencia fluida para el usuario.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Integración con MongoDB: Utiliza nextJS para interactuar eficientemente con una base de datos No relacional como MongoDB, asegurando una gestión robusta y segura de los datos.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Espero que disfrutes explorando NextJsCrud tanto como disfruté desarrollándolo! Si tienes alguna pregunta o sugerencia, ¡no dudes en ponerte en contacto!
