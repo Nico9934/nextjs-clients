@@ -53,7 +53,7 @@ const RegisterPage = () => {
   return (
     <div className="py-5 min-h-screen m-auto flex flex-col sm:flex-row justify-center gap-10 w-11/12 sm:w-9/12 items-center">
       <HeroDescription />
-      <div className="bg-gray-800 text-white  py-8 px-4 sm:p-8 rounded shadow-md w-96">
+      <div className="bg-gray-800 text-white py-8 px-4 sm:p-8 rounded shadow-md w-full sm:w-1/2">
         <h2 className="text-2xl font-semibold mb-4">Registro</h2>
 
         {error && (

@@ -50,14 +50,14 @@ const DashboardPage = () => {
   return (
     <div>
       <NavBar />
-      <div className="min-h-screen flex justify-center bg-gray-950 text-white">
+      <div className="min-h-screen flex mt-5 sm:mt-10 justify-center bg-gray-950 text-white">
         {loading ? (
           <div className="w-full h-full flex justify-center items-center">
             <Spinner />
           </div>
         ) : (
           <div className="px-2 rounded shadow-md w-full sm:w-9/12">
-            <div className="flex justify-between items-center font-semibold mb-8 ">
+            <div className="flex justify-between items-center font-semibold mb-4 sm:mb-8 ">
               <h2 className="text-md sm:text-xl">Clientes</h2>
               <Link
                 href="/newClient"
@@ -68,7 +68,7 @@ const DashboardPage = () => {
                 </svg>
               </Link>
             </div>
-            <table className="w-full mb-4 border-b-2">
+            <table className="w-full sm:m-auto sm:w-full mb-4 border-b-2">
               <thead className="hidden sm:table-header-group">
                 <tr className="">
                   <th className="text-start">Nombre</th>

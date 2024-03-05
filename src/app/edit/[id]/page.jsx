@@ -72,17 +72,17 @@ const EditClientForm = ({ params }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="min-h-screen flex items-center w-11/12 m-auto justify-center flex-col">
       <Link
         href={"/dashboard"}
-        className="text-gray-100 w-9/12 text-start flex items-center gap-5"
+        className="text-gray-100 w-full mb-5  mt-5 text-start flex items-center gap-3 justify-start"
       >
         <svg className="w-4 h-4 fill-gray-100" viewBox="0 0 512 512">
           <path d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z" />
         </svg>
         Volver
       </Link>
-      <div className="bg-gray-800 text-white p-8 rounded shadow-md w-96">
+      <div className="bg-gray-800 text-white py-8 px-4 mb-5 sm:p-8 rounded shadow-md w-full sm:w-1/2">
         <h2 className="text-2xl font-semibold mb-4">Editar cliente</h2>
 
         {error && (
@@ -109,7 +109,7 @@ const EditClientForm = ({ params }) => {
                 name="name"
                 value={client.name}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border rounded text-xs text-gray-800"
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
                 placeholder="Ingresa el nombre del cliente"
               />
             </div>
@@ -124,7 +124,7 @@ const EditClientForm = ({ params }) => {
                 name="email"
                 value={client.email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border rounded text-xs text-gray-800"
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
                 placeholder="Ingresa el email del cliente"
               />
             </div>
@@ -139,7 +139,7 @@ const EditClientForm = ({ params }) => {
                 name="phone"
                 value={client.phone}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border rounded text-xs text-gray-800"
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
                 placeholder="Ingresa el teléfono del cliente"
               />
             </div>
@@ -157,7 +157,7 @@ const EditClientForm = ({ params }) => {
                 name="address"
                 value={client.address}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border rounded text-xs text-gray-800"
+                className="w-full px-3 py-2 border-2 rounded text-xs text-gray-800 focus:border-violet-700 focus:outline-none transition-all duration-400"
                 placeholder="Ingresa la dirección del cliente"
               />
             </div>
