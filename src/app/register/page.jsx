@@ -25,24 +25,48 @@ const RegisterPage = () => {
     }));
   };
 
+  const validateData = () => {
+    console.log("validando...");
+    const emailRegex =
+      /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    const stringRegex = /^[a-zA-Z ]+$/;
+    const numberRegex = /^[0-9]+$/;
+
+    if (Object.values(user).includes("")) {
+      setError("Todos los campos son obligatorios");
+      return false;
+    } else if (!stringRegex.test(user.name)) {
+      setError("Debes ingresar un nombre válido");
+      return false;
+    } else if (!emailRegex.test(user.email)) {
+      setError("Debes ingresar un mail correcto");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const onHandleSubmit = async (e) => {
     e.preventDefault();
+    const validado = validateData();
     try {
-      const res = await axios.post("/api/auth/register", user);
-      setUser({
-        password: "",
-        email: "",
-        fullname: "",
-      });
+      if (validado) {
+        const res = await axios.post("/api/auth/register", user);
+        setUser({
+          password: "",
+          email: "",
+          fullname: "",
+        });
 
-      const resNextAuth = await signIn("credentials", {
-        email: res.data.userSaved.email,
-        password: user.password,
-        redirect: false,
-      });
-      if (resNextAuth.ok) router.push("/dashboard");
+        const resNextAuth = await signIn("credentials", {
+          email: res.data.userSaved.email,
+          password: user.password,
+          redirect: false,
+        });
+        if (resNextAuth.ok) router.push("/dashboard");
 
-      setError("");
+        setError("");
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
         setError(error.response.data);
@@ -58,7 +82,7 @@ const RegisterPage = () => {
 
         {error && (
           <div className="text-center text-sm px-5 py-1 text-gray-100 bg-red-400 rounded-sm font-medium mb-3">
-            {error.message}
+            {error.message || error}
           </div>
         )}
         <form onSubmit={onHandleSubmit}>
