@@ -23,6 +23,7 @@ const AddClientForm = () => {
       router.push("/dashboard");
     }
   }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setClient((prevClient) => ({
@@ -31,10 +32,35 @@ const AddClientForm = () => {
     }));
   };
 
+  const validateData = () => {
+    console.log("validando...");
+    const emailRegex =
+      /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    const stringRegex = /^[a-zA-Z ]+$/;
+    const numberRegex = /^[0-9]+$/;
+
+    if (Object.values(client).includes("")) {
+      setError("Todos los campos son obligatorios");
+      return false;
+    } else if (!stringRegex.test(client.name)) {
+      setError("Debes ingresar un nombre válido");
+      return false;
+    } else if (!emailRegex.test(client.email)) {
+      setError("Debes ingresar un mail correcto");
+      return false;
+    } else if (!numberRegex.test(client.phone)) {
+      setError("Debes ingresar un telefono válido");
+      return false;
+    } else {
+      return true;
+    }
+  };
   const handleSaveClient = async (e) => {
     e.preventDefault();
+    const validado = validateData();
+
     try {
-      if (client.user && status === "authenticated") {
+      if (client.user && status === "authenticated" && validado) {
         const res = await axios.post("api/clients", client);
         if (res.status === 200) {
           router.push("/dashboard");
@@ -71,7 +97,7 @@ const AddClientForm = () => {
 
         {error && (
           <div className="text-center text-sm px-5 py-1 text-gray-100 bg-red-400 rounded-sm font-medium mb-3">
-            {error.message}
+            {error.message || error}
           </div>
         )}
         <form onSubmit={handleSaveClient}>
