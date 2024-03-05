@@ -1,3 +1,5 @@
+![Portada](/public/portadaGithub.png)
+
 # 🔷 ClientApp Manager - Descripción del Proyecto 🔷
 
 Mi nombre es Nico Rolón, y quiero compartir contigo mi proyecto ClientApp, una aplicación desarrollada completamente con Next.js, TypeScript y MongoDb. Este proyecto representa un paso significativo en mi trayectoria como desarrollador FrontEnd, y ha sido construido utilizando tecnologías avanzadas para brindar una experiencia eficiente y atractiva.
